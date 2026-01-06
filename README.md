@@ -1,5 +1,5 @@
 # embedded-design-portfolio
-## My portfolio for documenting my favorite embedded systems projects!
+## My portfolio for documenting my top embedded systems projects!
 Hello!
 
 My name is Nicholas West, and I am a third-year Computer Engineering student at the University of Delaware with a strong interest in embedded systems engineering. My interests are working across the full embedded stack, from low-level firmware development & bare-metal programming to designing/prototyping the hardware.
