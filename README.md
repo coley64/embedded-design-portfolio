@@ -6,7 +6,7 @@ My name is Nicholas West, and I am a third-year Computer Engineering student at 
 
   Through my coursework at UD, I have built a solid foundation in microcontrollers, digital & analog circuits, bare-metal programming, engineering math, and computer science. I build off of this experience through my independent, hands-on projects, where I focus on designing, implementing, and debugging real embedded systems.
   
-  This portfolio highlights my favorite projects and documents my engineering process, including system design decisions, low-level implementation details, debugging strategies, and what each project taught me. You can navigate through the projects using the ‘Document Tabs’ in the left sidebar.*
+  This portfolio highlights my favorite projects and documents my engineering process, including system design decisions, low-level implementation details, debugging strategies, and what each project taught me.
 
 Please feel free to reach out to me at npwest@udel.edu with any questions about my background, projects, or technical experience. Thank you for your time, and I hope you find these projects as interesting as I do!
 
