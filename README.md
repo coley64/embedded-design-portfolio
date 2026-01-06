@@ -11,5 +11,4 @@ My name is Nicholas West, and I am a third-year Computer Engineering student at 
 Please feel free to reach out to me at npwest@udel.edu with any questions about my background, projects, or technical experience. Thank you for your time, and I hope you find these projects as interesting as I do!
 
 Thanks,
-
 Nick
