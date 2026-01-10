@@ -12,4 +12,4 @@ Please feel free to reach out to me at npwest@udel.edu with any questions about 
 Thanks,  
 Nick
 
-<img src="images/20260106_151216.jpg" width="330" height="330"> <img src="images/20251121_133335.jpg" width="330" height="330"> <img src="images/14796dd2-cde5-4467-9ad2-9298020fe8f7.jpg" width="330" height="330">
+<img src="imgs/20260106_151216.jpg" width="330" height="330"> <img src="imgs/20251121_133335.jpg" width="330" height="330"> <img src="imgs/14796dd2-cde5-4467-9ad2-9298020fe8f7.jpg" width="330" height="330">
