@@ -16,7 +16,7 @@ Line-Following Robot for the final project in my microcontroller class. We were 
 ## Challenges & Difficulties: 
 The trickiest part was designing ISR’s that were able to handle all the turns & angles of the course, as shown below. We solved this by triggering different routines based on which of the four IR sensors were activated. Another challenge was getting the Ultrasonic sensor to work, which required a lot of debugging and trial-and-error.
 ## Result:
-Success! Our robot was one of the top race finalists, and I am happy how all of our code/peripherals came together. This project was a lot of fun to work on, and I am proud of the end result.
+Success! Our robot was one of the top race finalists, and I am happy how all of our code/peripherals came together. This project was a lot of fun to work on, and I am proud of the end result. Project recieved full credit from instructors, as well as additional bonus credits for meeting special criteria.
 ![Robot final product, right before racing](docs/line-follow-robot-final.jpg)
 ![Racing the robot](docs/final-race.jfif)
 ![Testing the robot's line-following](docs/robot-racing.jpg)
