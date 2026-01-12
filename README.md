@@ -8,10 +8,10 @@ My name is Nicholas West, and I am a third-year Computer Engineering student at 
   This portfolio highlights my favorite projects and documents my engineering process, including system design decisions, low-level implementation details, debugging strategies, and what each project taught me.
 
   > Here is a mini table-of-contents of my portfolio projects at a glance. I build off of each skill in every project, so for each I will list key skills learned:
-> - Line-Follow Robot: Autonomous development, ADC/DAC, Nested Vectored Interrupt Controller (NVIC), pulse-wdith modulation (PWM), advanced sensor feedback
-> - Ultrasonic Radar System: Embedded C, UART, Interrupt Service Routines, timers, GPIO configs, registers access and control, software debouncing
+> - [Line-Follow Robot](line-follow-robot): Autonomous development, ADC/DAC, Nested Vectored Interrupt Controller (NVIC), pulse-wdith modulation (PWM), advanced sensor feedback
+> - [Ultrasonic Radar System](ultrasonic-radar-system): Embedded C, UART, Interrupt Service Routines, timers, GPIO configs, registers access and control, software debouncing
 > - Environment Sensor: I2C, controlling multiple sensors & NeoPixels, Arduino framework
-> - Pocket To-Do List: I2C, controlling OLED Display, PCB prototyping
+> - [Pocket To-Do List](pocket-todo-tracker): I2C, controlling OLED Display, PCB prototyping
   
 
 Please feel free to reach out to me at npwest@udel.edu with any questions about my background, projects, or technical experience. Thank you for your time, and I hope you find these projects as interesting as I do!
