@@ -1,0 +1,2 @@
+Command: ninja reconfig
+ninja: error: unknown target 'reconfig', did you mean 'menuconfig'?

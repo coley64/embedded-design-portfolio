@@ -1,8 +1,7 @@
 /*
- * SPDX-FileCopyrightText: 2021-2026 Espressif Systems (Shanghai) CO LTD
- *
- * SPDX-License-Identifier: CC0-1.0
- */
+Created by Nicholas West
+1/12/2026
+*/
 
 #include <stdio.h>
 #include <string.h>
@@ -24,7 +23,6 @@ static const char *TAG = "ssd1306_example";
 #define EXAMPLE_PIN_NUM_RST -1      // Set to -1 if no reset pin wired
 #define EXAMPLE_I2C_HW_ADDR 0x3C
 #define EXAMPLE_I2C_CLOCK_HZ (400 * 1000)
-
 #define LCD_H_RES 128
 #define LCD_V_RES 64
 
@@ -49,16 +47,15 @@ static void set_pixel(int x, int y, bool on)
         oled_buffer[byte_index] |= bit_mask;
 }
 
-// Draw a horizontal line
+// Draw a horizontal line, unused rn
 // static void draw_hline(int y)
 // {
 //     for (int x = 0; x < LCD_H_RES; x++)
 //         set_pixel(x, y, true);
 // }
-// Example 5x7 font array (only includes 'A' and 'B' for demo)
-static const uint8_t font5x7[][5] = {
-    // left to right columns
 
+static const uint8_t font5x7[][5] = {
+    // kinda have to tilt your head to the left and squint at it to see the letters, lol
     { // A
         0b00111111,
         0b01001000,
@@ -270,8 +267,6 @@ static const uint8_t font5x7[][5] = {
 
 void draw_char(int x, int y, char c)
 {
-    //if (c < 'A' || c > 'B') return; // only demo 'A' and 'B'
-
     const uint8_t *bitmap = font5x7[c - 'A'];
     for (int col = 0; col < 5; col++) {
         for (int row = 0; row < 7; row++) {
@@ -296,21 +291,18 @@ void draw_text(int x, int y, const char *text)
 }
 
 // Clear framebuffer
-static void clear_buffer(void)
-{
+static void clear_buffer(void){
     memset(oled_buffer, 0xFF, sizeof(oled_buffer)); // all pixels OFF
 }
 
 // Flush framebuffer to SSD1306
-static void flush_buffer(esp_lcd_panel_handle_t panel)
-{
+static void flush_buffer(esp_lcd_panel_handle_t panel){
     esp_lcd_panel_draw_bitmap(panel, 0, 0, LCD_H_RES, LCD_V_RES, oled_buffer);
 }
 
 /************** Main program ***************/
 
 void app_main(void) {
-    
     ESP_LOGI(TAG, "Initialize I2C bus");
     i2c_master_bus_handle_t i2c_bus = NULL;
     i2c_master_bus_config_t bus_config = {
@@ -347,30 +339,17 @@ void app_main(void) {
     ESP_ERROR_CHECK(esp_lcd_panel_reset(panel_handle));
     ESP_ERROR_CHECK(esp_lcd_panel_init(panel_handle));
     ESP_ERROR_CHECK(esp_lcd_panel_disp_on_off(panel_handle, true));
-
-    ESP_LOGI(TAG, "Clear display");
     clear_buffer();
     flush_buffer(panel_handle);
 
-    ESP_LOGI(TAG, "Draw demo graphics");
-    // draw_hline(10);
-    // draw_hline(30);
-    // draw_hline(50);
-    // flush_buffer(panel_handle);
-    // clear_buffer();
-    // draw_text(15, 5, "ABAB");
-    // flush_buffer(panel_handle);
+    ESP_LOGI(TAG, "initialize text");
     draw_text(100, 40,"ABC DEF GHI");
     draw_text(40, 25,"JKL MNO PQR");
     draw_text(50, 10,"STU VWX YZ");
-
     flush_buffer(panel_handle);
-    // uint16_t i = 0;
-    ESP_LOGI(TAG, "Demo done, enter idle loop");
+
+    // superloop
     while (1) {
-        // clear_buffer();
-        // draw_text(i, 10,"STU VWX YZ");
-        // flush_buffer(panel_handle);
-        vTaskDelay(pdMS_TO_TICKS(350));}
-        // i++;
+        vTaskDelay(pdMS_TO_TICKS(350));
+    }
 }

@@ -1,7 +1,7 @@
 {
     "version":            "1.2",
     "project_name":       "pocket-todo",
-    "project_version":    "53d85c3-dirty",
+    "project_version":    "7080342-dirty",
     "project_path":       "C:/Users/Cole/embedded-design-portfolio/pocket-todo",
     "idf_path":           "C:/Users/Cole/esp/v5.5.1/esp-idf",
     "build_dir":          "C:/Users/Cole/embedded-design-portfolio/pocket-todo/build",
