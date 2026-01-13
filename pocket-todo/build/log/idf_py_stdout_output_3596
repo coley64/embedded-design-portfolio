@@ -1,0 +1,60 @@
+Command: ninja flash
+[1/10] Performing build step for 'bootloader'
+[1/1] C:\Windows\system32\cmd.exe /C "cd /D C:\Users\Cole\embedded-design-portfolio\pocket-todo\build\bootloader\esp-idf\esptool_py && C:\Users\Cole\.espressif\python_env\idf5.5_py3.11_env\Scripts\python.exe C:/Users/Cole/esp/v5.5.1/esp-idf/components/partition_table/check_sizes.py --offset 0x8000 bootloader 0x1000 C:/Users/Cole/embedded-design-portfolio/pocket-todo/build/bootloader/bootloader.bin"
+Bootloader binary size 0x6680 bytes. 0x980 bytes (8%) free.
+[2/10] No install step for 'bootloader'
+[3/10] Completed 'bootloader'
+[4/10] Building C object esp-idf/main/CMakeFiles/__idf_main.dir/main_display.c.obj
+[5/10] Linking C static library esp-idf\main\libmain.a
+[6/10] Generating esp-idf/esp_system/ld/sections.ld
+[7/10] Linking CXX executable pocket-todo.elf
+[8/10] Generating binary image from built executable
+esptool.py v4.11.dev1
+Creating esp32 image...
+Merged 2 ELF sections
+Successfully created esp32 image.
+Generated C:/Users/Cole/embedded-design-portfolio/pocket-todo/build/pocket-todo.bin
+[9/10] C:\Windows\system32\cmd.exe /C "cd /D C:\Users\Cole\embedded-design-portfolio\pocket-todo\build\esp-idf\esptool_py && C:\Users\Cole\.espressif\python_env\idf5.5_py3.11_env\Scripts\python.exe C:/Users/Cole/esp/v5.5.1/esp-idf/components/partition_table/check_sizes.py --offset 0x8000 partition --type app C:/Users/Cole/embedded-design-portfolio/pocket-todo/build/partition_table/partition-table.bin C:/Users/Cole/embedded-design-portfolio/pocket-todo/build/pocket-todo.bin"
+pocket-todo.bin binary size 0x34ac0 bytes. Smallest app partition is 0x100000 bytes. 0xcb540 bytes (79%) free.
+[9/10] C:\Windows\system32\cmd.exe /C "cd /D C:\Users\Cole\esp\v5.5.1\esp-idf\components\esptool_py && C:\Users\Cole\.espressif\tools\cmake\3.30.2\bin\cmake.exe -D IDF_PATH=C:/Users/Cole/esp/v5.5.1/esp-idf -D SERIAL_TOOL=C:/Users/Cole/.espressif/python_env/idf5.5_py3.11_env/Scripts/python.exe;;C:/Users/Cole/esp/v5.5.1/esp-idf/components/esptool_py/esptool/esptool.py;--chip;esp32 -D SERIAL_TOOL_ARGS=--before=default_reset;--after=hard_reset;write_flash;@flash_args -D WORKING_DIRECTORY=C:/Users/Cole/embedded-design-portfolio/pocket-todo/build -P C:/Users/Cole/esp/v5.5.1/esp-idf/components/esptool_py/run_serial_tool.cmake"
+esptool.py --chip esp32 -p COM4 -b 460800 --before=default_reset --after=hard_reset write_flash --flash_mode dio --flash_freq 40m --flash_size 2MB 0x1000 bootloader/bootloader.bin 0x10000 pocket-todo.bin 0x8000 partition_table/partition-table.bin
+esptool.py v4.11.dev1
+Serial port COM4
+Connecting....
+Chip is ESP32-D0WD-V3 (revision v3.1)
+Features: WiFi, BT, Dual Core, 240MHz, VRef calibration in efuse, Coding Scheme None
+Crystal is 40MHz
+MAC: f4:65:0b:c0:f4:90
+Uploading stub...
+Running stub...
+Stub running...
+Changing baud rate to 460800
+Changed.
+Configuring flash size...
+Flash will be erased from 0x00001000 to 0x00007fff...
+Flash will be erased from 0x00010000 to 0x00044fff...
+Flash will be erased from 0x00008000 to 0x00008fff...
+SHA digest in image updated
+Compressed 26240 bytes to 16492...
+Writing at 0x00001000... (50 %)
+Writing at 0x000075ef... (100 %)
+Wrote 26240 bytes (16492 compressed) at 0x00001000 in 0.6 seconds (effective 367.7 kbit/s)...
+Hash of data verified.
+Compressed 215744 bytes to 116439...
+Writing at 0x00010000... (12 %)
+Writing at 0x0001c0b9... (25 %)
+Writing at 0x000238ad... (37 %)
+Writing at 0x00029a9a... (50 %)
+Writing at 0x000310f9... (62 %)
+Writing at 0x00037d6e... (75 %)
+Writing at 0x0003d968... (87 %)
+Writing at 0x00043dc1... (100 %)
+Wrote 215744 bytes (116439 compressed) at 0x00010000 in 2.7 seconds (effective 629.6 kbit/s)...
+Hash of data verified.
+Compressed 3072 bytes to 103...
+Writing at 0x00008000... (100 %)
+Wrote 3072 bytes (103 compressed) at 0x00008000 in 0.0 seconds (effective 681.2 kbit/s)...
+Hash of data verified.
+
+Leaving...
+Hard resetting via RTS pin...

@@ -13,6 +13,9 @@ Created by Nicholas West
 #include "esp_lcd_panel_ops.h"
 #include "esp_lcd_panel_vendor.h"  // for SSD1306 driver
 #include "esp_err.h"
+#include "driver/uart.h"
+#include "driver/gpio.h"
+
 
 static const char *TAG = "ssd1306_example";
 
@@ -47,21 +50,21 @@ static void set_pixel(int x, int y, bool on)
         oled_buffer[byte_index] |= bit_mask;
 }
 
-// Draw a horizontal line, unused rn
-// static void draw_hline(int y)
-// {
-//     for (int x = 0; x < LCD_H_RES; x++)
-//         set_pixel(x, y, true);
-// }
+// Draw a horizontal line
+static void x_out(int y)
+{
+    for (int x = 10; x < 115; x++)
+        set_pixel(x, y, true);
+}
 
 static const uint8_t font5x7[][5] = {
     // kinda have to tilt your head to the left and squint at it to see the letters, lol
     { // A
-        0b00111111,
-        0b01001000,
-        0b01001000,
-        0b01001000,
-        0b00111111
+        0b0111111,
+        0b1001000,
+        0b1001000,
+        0b1001000,
+        0b0111111
     },
 
     { // B
@@ -105,10 +108,10 @@ static const uint8_t font5x7[][5] = {
     },
 
     { // G
-        0b01011110,
-        0b00100001,
+        0b00110110,
+        0b00101001,
         0b01001001,
-        0b01001001,
+        0b01000001,
         0b00111110
     },
 
@@ -129,11 +132,11 @@ static const uint8_t font5x7[][5] = {
     },
 
     { // J
-        0b00000001,
-        0b00111111,
-        0b01000001,
         0b01000000,
-        0b00100000
+        0b01111111,
+        0b01000001,
+        0b01000001,
+        0b00000010
     },
 
     { // K
@@ -145,26 +148,26 @@ static const uint8_t font5x7[][5] = {
     },
 
     { // L
-        0b01000000,
-        0b01000000,
-        0b01000000,
-        0b01000000,
+        0b00000001,
+        0b00000001,
+        0b00000001,
+        0b00000001,
         0b01111111
     },
 
     { // M
         0b01111111,
-        0b00000100,
-        0b00000010,
-        0b00000100,
+        0b00010000,
+        0b00001000,
+        0b00010000,
         0b01111111
     },
 
     { // N
         0b01111111,
-        0b00010000,
         0b00001000,
-        0b00000100,
+        0b00010000,
+        0b0010000,
         0b01111111
     },
 
@@ -177,51 +180,51 @@ static const uint8_t font5x7[][5] = {
     },
 
     { // P
-        0b00000110,
-        0b00001001,
-        0b00001001,
-        0b00001001,
+        0b00110000,
+        0b01001000,
+        0b01001000,
+        0b01001000,
         0b01111111
     },
 
     { // Q
-        0b01011110,
-        0b00100001,
-        0b01010001,
+        0b00111101,
+        0b01000101,
+        0b01000001,
         0b01000001,
         0b00111110
     },
 
     { // R
-        0b01000110,
-        0b00101001,
-        0b00011001,
-        0b00001001,
+        0b00110011,
+        0b01001100,
+        0b01001000,
+        0b01001000,
         0b01111111
     },
 
     { // S
-        0b00110001,
-        0b01001001,
-        0b01001001,
-        0b01001001,
-        0b01000110
+        0b0100110,
+        0b1001001,
+        0b1001001,
+        0b1001001,
+        0b0110001
     },
 
     { // T
-        0b00000001,
-        0b00000001,
-        0b01111111,
-        0b00000001,
-        0b00000001
+        0b1000000,
+        0b1000000,
+        0b1111110,
+        0b1000000,
+        0b1000000
     },
 
     { // U
-        0b00111111,
-        0b01000000,
-        0b01000000,
-        0b01000000,
-        0b00111111
+        0b1111110,
+        0b0000001,
+        0b0000001,
+        0b0000001,
+        0b1111110
     },
 
     { // V
@@ -262,6 +265,14 @@ static const uint8_t font5x7[][5] = {
         0b10010010,
         0b10100101,
         0b11000001
+    },
+
+    { // [, or a box in our code
+        0b1111111,
+        0b1000001,
+        0b1000001,
+        0b1000001,
+        0b1111111
     }
 };
 
@@ -343,13 +354,26 @@ void app_main(void) {
     flush_buffer(panel_handle);
 
     ESP_LOGI(TAG, "initialize text");
-    draw_text(100, 40,"ABC DEF GHI");
-    draw_text(40, 25,"JKL MNO PQR");
-    draw_text(50, 10,"STU VWX YZ");
+    draw_text(120, 35,"[ TAKE OUT THE TRASH");
+    draw_text(90, 20,"KAMUSTA RUTHIE");
+    draw_text(80, 5,"STU VWX YZ");
     flush_buffer(panel_handle);
+
+
+
+
+
+    gpio_set_direction(17, GPIO_MODE_INPUT);
+    gpio_input_enable(17);
+    gpio_set_pull_mode(17, GPIO_PULLUP_ONLY);
+
 
     // superloop
     while (1) {
+        if (gpio_get_level(17) == 0){
+            x_out(37);
+            flush_buffer(panel_handle);
+        }
         vTaskDelay(pdMS_TO_TICKS(350));
     }
 }
